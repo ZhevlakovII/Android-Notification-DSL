@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: "io.gitlab.arturbosch.detekt"
+apply from: 'publish.gradle'
+
+detekt {
+    allRules = true
+    buildUponDefaultConfig = true
+    config = files("$rootDir/config/detekt.yml")
+
+    reports {
+        html.enabled = true // observe findings in your browser with structure and code snippets
+        xml.enabled = false
+        txt.enabled = false
+    }
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+    }
+}
+
+dependencies {
+    implementation project(":core")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$androidXCore"
+    testImplementation 'junit:junit:4.13.2'
+}

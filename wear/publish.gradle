@@ -1,0 +1,9 @@
+group = 'com.github.kirich1409'
+version = rootProject.ext.androidNotificationDslVersion
+
+ext.groupId = 'com.github.kirich1409'
+ext.artifactId = 'android-notification-dsl-extensions'
+ext.name = 'Android Notifcation DSL Extentions'
+ext.description = 'Extentions for Android Notifcation DSL'
+
+apply from: '../publishing.gradle'
